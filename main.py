@@ -5,12 +5,13 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
+import os
 
-TMDB_APIKEY = "1ec959d25bbe0be78fb50ec275c11845"
+TMDB_APIKEY = os.environ['TMDB_APIKEY']
 TMDB_SEARCH_URL = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_APIKEY}&query="
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 Bootstrap(app)
 
 db = SQLAlchemy()
